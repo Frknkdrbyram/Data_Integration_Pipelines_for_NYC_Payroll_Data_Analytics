@@ -29,6 +29,73 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/aggregate_pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Dataflow Aggregate Data",
+								"type": "DataFlowReference",
+								"parameters": {
+									"dataflow_param_fiscalyear": {
+										"value": "@pipeline().globalParameters.globalparameter",
+										"type": "Expression"
+									}
+								},
+								"datasetParameters": {
+									"source1": {},
+									"source2": {},
+									"Sink": {}
+								}
+							},
+							"staging": {
+								"linkedService": {
+									"referenceName": "ls_datalakegen2_payroll",
+									"type": "LinkedServiceReference"
+								},
+								"folderPath": "adlsnycpayroll-furkan-kb/dirstaging"
+							},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"globalparam": {
+						"type": "int",
+						"defaultValue": 2021
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-04-27T02:25:42Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Dataflow Aggregate Data')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_datalakegen2_payroll')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/load2021dataintotransactiontableintheSQLDB')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -259,73 +326,6 @@
 				"[concat(variables('factoryId'), '/dataflows/dataflowtitle')]",
 				"[concat(variables('factoryId'), '/dataflows/dataflowemployee')]",
 				"[concat(variables('factoryId'), '/dataflows/to load 2021 data from SQL DB to Synapse Analytics')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Data flow1",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "Dataflow Aggregate Data",
-								"type": "DataFlowReference",
-								"parameters": {
-									"dataflow_param_fiscalyear": {
-										"value": "@pipeline().globalParameters.globalparameter",
-										"type": "Expression"
-									}
-								},
-								"datasetParameters": {
-									"source1": {},
-									"source2": {},
-									"Sink": {}
-								}
-							},
-							"staging": {
-								"linkedService": {
-									"referenceName": "ls_datalakegen2_payroll",
-									"type": "LinkedServiceReference"
-								},
-								"folderPath": "adlsnycpayroll-furkan-kb/dirstaging"
-							},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"parameters": {
-					"globalparam": {
-						"type": "int",
-						"defaultValue": 2021
-					}
-				},
-				"annotations": [],
-				"lastPublishTime": "2023-04-27T02:25:42Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/Dataflow Aggregate Data')]",
-				"[concat(variables('factoryId'), '/linkedServices/ls_datalakegen2_payroll')]"
 			]
 		},
 		{
