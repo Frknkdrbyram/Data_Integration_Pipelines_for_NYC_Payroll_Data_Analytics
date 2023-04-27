@@ -19,7 +19,7 @@ The below diagram shows the project architecture.
 - Step 6: Get Data analysis from Synapse SQL DW.
 
 
-### pipeline_load_payroll_data_2021.
+### pipeline_load_payroll_data_2021
 
 ![pipeline_load_payroll_data_2021](screenshots/pipeline_1.png "pipeline_load_payroll_data_2021.jpeg")
 
