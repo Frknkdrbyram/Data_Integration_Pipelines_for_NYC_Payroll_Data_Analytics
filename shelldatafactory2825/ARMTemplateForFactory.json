@@ -35,7 +35,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Data flow1",
+						"name": "Data flow aggregate",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
@@ -290,7 +290,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "to load 2021 data from SQL DB to Synapse Analytics",
+								"referenceName": "pipeline_load_payroll_data_2021",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
@@ -325,7 +325,7 @@
 				"[concat(variables('factoryId'), '/linkedServices/ls_datalakegen2_payroll')]",
 				"[concat(variables('factoryId'), '/dataflows/dataflowtitle')]",
 				"[concat(variables('factoryId'), '/dataflows/dataflowemployee')]",
-				"[concat(variables('factoryId'), '/dataflows/to load 2021 data from SQL DB to Synapse Analytics')]"
+				"[concat(variables('factoryId'), '/dataflows/pipeline_load_payroll_data_2021')]"
 			]
 		},
 		{
@@ -1432,7 +1432,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/to load 2021 data from SQL DB to Synapse Analytics')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline_load_payroll_data_2021')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
