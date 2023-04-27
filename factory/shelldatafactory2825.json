@@ -1,0 +1,17 @@
+{
+	"name": "shelldatafactory2825",
+	"properties": {
+		"globalParameters": {
+			"globalparameter": {
+				"type": "int",
+				"value": 2021
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0f125c1b-e9bc-4eba-92d8-f659f93c1b01",
+		"tenantId": "8243eb59-aff4-4182-9d01-a3ced7e0dd5d"
+	}
+}
