@@ -1,5 +1,5 @@
 {
-	"name": "to load 2021 data from SQL DB to Synapse Analytics",
+	"name": "pipeline_load_payroll_data_2021",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

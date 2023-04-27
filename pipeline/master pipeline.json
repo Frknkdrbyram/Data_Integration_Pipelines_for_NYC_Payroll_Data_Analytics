@@ -128,7 +128,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "to load 2021 data from SQL DB to Synapse Analytics",
+						"referenceName": "pipeline_load_payroll_data_2021",
 						"type": "DataFlowReference"
 					},
 					"staging": {
